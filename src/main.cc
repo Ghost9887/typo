@@ -9,28 +9,28 @@ int main()
 
     Mead::Panel root { Mead::Panel::FullScreen() };
 
-    Mead::Panel left { Mead::XPercent(50), Mead::YPercent(100), Mead::Location::LEFT };
-    Mead::Panel right { Mead::XPercent(50), Mead::YPercent(100), Mead::Location::RIGHT };
+    Mead::Panel left { Mead::WidthPercent(50), Mead::HeightPercent(100), Mead::Location::LEFT };
+    Mead::Panel right { Mead::WidthPercent(50), Mead::HeightPercent(100), Mead::Location::RIGHT };
 
     Mead::Text leftText { "Hello, World", Mead::Location::CENTER };
     Mead::Text rightText { "Hello, World", Mead::Location::CENTER };
 
-    Mead::Border leftBorder { Mead::Border::Basic() };
-    Mead::Border rightBorder { Mead::Border::Basic() };
+    Mead::Border border { Mead::Border::Basic() };
 
-
-    left.Add(leftBorder);
+    left.Add(border);
     left.Add(leftText);
 
-    right.Add(rightBorder);
+    right.Add(border);
     right.Add(rightText);
 
     root.Add(left);
     root.Add(right);
 
+    term.AddPanel(root);
+
     while (true)
     {
-        root.Display();
+        term.Render(root);
         if (term.GetKey() == 'q') break;
     }
 
