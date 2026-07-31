@@ -9,16 +9,20 @@ int main()
 
     Mead::Panel root { Mead::Panel::FullScreen() };
 
-    Mead::Panel left { Mead::WidthPercent(50), Mead::HeightPercent(100), Mead::Location::LEFT };
-    Mead::Panel right { Mead::WidthPercent(50), Mead::HeightPercent(100), Mead::Location::RIGHT };
+    Mead::Panel left { Mead::WidthPercent(50), Mead::HeightPercent(100), Mead::Anchor::LEFT };
 
-    Mead::Text leftText { "Hello, World", Mead::Location::CENTER };
-    Mead::Text rightText { "Hello, World", Mead::Location::CENTER };
+    Mead::Panel right { Mead::WidthPercent(50), Mead::HeightPercent(100), Mead::Anchor::RIGHT };
 
-    Mead::Border border { Mead::Border::Basic() };
+    Mead::Text leftText { "Hello, World", Mead::Allignment::CENTER };
+    Mead::Text rightText { "Hello, World", Mead::Allignment::CENTER };
+
+    Mead::Text title { "Title", Mead::Allignment::TITLE_CENTER };
+
+    Mead::Border border { Mead::Border::Round() };
 
     left.Add(border);
     left.Add(leftText);
+    left.Add(title);
 
     right.Add(border);
     right.Add(rightText);
